@@ -20,7 +20,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/admin/settings/users', name: 'app_settings')]
+    #[Route(path: '/admin/settings/users', name: 'app_settings_users')]
     public function user_list(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');
