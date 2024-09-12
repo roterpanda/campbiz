@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
+    public function __construct(private UserRepository $userRepository)
+    {
+    }
 
     #[Route(path: '/admin/settings', name: 'app_settings')]
     public function index(): Response
@@ -25,8 +29,11 @@ class AdminController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');
 
+        $users = $this->userRepository->findAll();
+
         return $this->render('admin/settings/users.html.twig', [
             'controller_name' => 'SettingsController',
+            'users' => $users,
         ]);
     }
 }
