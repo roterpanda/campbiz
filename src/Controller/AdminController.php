@@ -19,4 +19,14 @@ class AdminController extends AbstractController
             'controller_name' => 'SettingsController',
         ]);
     }
+
+    #[Route(path: '/admin/settings/users', name: 'app_settings')]
+    public function user_list(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');
+
+        return $this->render('admin/settings/users.html.twig', [
+            'controller_name' => 'SettingsController',
+        ]);
+    }
 }
