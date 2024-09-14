@@ -16,7 +16,7 @@
                 <tr>
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
-                    <td>{{ user.roles|join(", ") }}</td>
+                    <td>{{ roles[loop.index0]|join(", ") }}</td>
                     <td>To Follow</td>
                 </tr>
             {% endfor %}
