@@ -2,14 +2,14 @@
 {% block title %}{{'User Settings'|trans}}{% endblock %}
 {% block body %}
     <h1>{{ 'Manage users'|trans }}</h1>
-    <a href="{{ path("app_add_user") }}" class="btn btn-primary">Add User</a>
+    <a href="{{ path("app_add_user") }}" class="btn btn-primary">{{ 'Add User'|trans }}</a>
     <table class="table">
         <thead>
             <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Actions</th>
+                <th>{{ 'Username'|trans }}</th>
+                <th>{{ 'Email'|trans }}</th>
+                <th>{{ 'Roles'|trans }}</th>
+                <th>{{ 'Actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ roles[loop.index0]|join(", ") }}</td>
-                    <td>To Follow</td>
+                    <td></td>
                 </tr>
             {% endfor %}
         </tbody>

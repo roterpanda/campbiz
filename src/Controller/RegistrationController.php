@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/admin/settings/users/add', name: 'app_add_user')]
+    #[Route('{_locale}/admin/settings/users/add', name: 'app_add_user', requirements: ['_locale' => '%app.supported_locales%'])]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');
