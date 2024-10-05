@@ -1,0 +1,11 @@
+# Dutch translations
+roles:
+  ROLE_ADMIN: "Beheerder"
+  ROLE_TECH_ADMIN: "Functioneel Beheerder"
+  ROLE_EMPLOYEE: "Medewerker"
+  ROLE_USER: "Gebruiker"
+  ROLE_UNKOWN: "Onbekend"
+
+Settings: "Instellingen"
+Manage users: "Gebruikers beheren"
+User Settings: "Gebruikersinstellingen"
