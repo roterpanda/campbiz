@@ -14,9 +14,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
+    #[Route('/admin/settings/users/add', name: 'app_add_user')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -33,10 +35,10 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $security->login($user, 'form_login', 'main');
+            return $this->redirectToRoute('app_settings_users');
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('admin/settings/add_user.html.twig', [
             'registrationForm' => $form,
         ]);
     }

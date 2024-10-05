@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Service\AppUtilities;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private UserRepository $userRepository, private AppUtilities $appUtils)
     {
     }
 
@@ -34,6 +35,7 @@ class AdminController extends AbstractController
         return $this->render('admin/settings/users.html.twig', [
             'controller_name' => 'SettingsController',
             'users' => $users,
+            'roles' => $this->appUtils->getRolesArrayFromUsers($users),
         ]);
     }
 }
