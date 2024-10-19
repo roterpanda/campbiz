@@ -12,9 +12,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationFormType extends AbstractType
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -22,10 +26,10 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter an email',
+                        'message' => $this->translator->trans('Please enter an email'),
                     ]),
                     new Email([
-                        'message' => 'Please enter a valid email',
+                        'message' => $this->translator->trans('Please enter a valid email'),
                     ]),
                 ]
             ])
@@ -36,7 +40,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => $this->translator->trans('Please enter a password'),
                     ]),
                     new Length([
                         'min' => 12,
@@ -48,9 +52,9 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
-                    'Admin' => 'ROLE_ADMIN',
-                    'Tech Admin' => 'ROLE_TECH_ADMIN',
-                    'Employee' => 'ROLE_EMPLOYEE',
+                    $this->translator->trans('roles.ROLE_ADMIN') => 'ROLE_ADMIN',
+                    $this->translator->trans('roles.ROLE_TECH_ADMIN') => 'ROLE_TECH_ADMIN',
+                    $this->translator->trans('roles.ROLE_EMPLOYEE') => 'ROLE_EMPLOYEE',
                 ],
                 'multiple' => true,
                 'expanded' => true,

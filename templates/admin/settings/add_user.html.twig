@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}Register{% endblock %}
+{% trans_default_domain 'messages' %}
+{% block title %}{{ 'Add User'|trans }}{% endblock %}
 {% block body %}
-    <h1>Add User</h1>
+    <h1>{{'Add User'|trans}}</h1>
     {{ form_errors(registrationForm) }}
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
+                label: 'Password'|trans
                 }) }}
         {{ form_row(registrationForm.roles, {
-                label: 'Roles'
+                label: 'Roles'|trans
                 }) }}
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">{{'Add User'|trans}}</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
