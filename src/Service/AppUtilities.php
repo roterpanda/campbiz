@@ -2,22 +2,17 @@
 
 namespace App\Service;
 use App\Entity\User;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class AppUtilities
 {
+    public function __construct(private TranslatorInterface $translator)
+    {
+    }
+
     public function getStringFromRole(string $role): string
     {
-        $roles = [
-            'ROLE_ADMIN' => 'Admin',
-            'ROLE_TECH_ADMIN' => 'Tech Admin',
-            'ROLE_EMPLOYEE' => 'Employee',
-            'ROLE_USER' => 'User',
-        ];
-        if (array_key_exists($role, $roles)) {
-            return $roles[$role];
-        } else {
-            return 'Unknown';
-        }
+        return $this->translator->trans('roles.' . $role, [], 'messages');
     }
 
     public function getPrintableRolesFromUser(User $user): array

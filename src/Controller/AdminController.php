@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    public function __construct(private UserRepository $userRepository, private AppUtilities $appUtils)
+    public function __construct(private readonly UserRepository $userRepository, private readonly AppUtilities $appUtils)
     {
     }
 
-    #[Route(path: '/admin/settings', name: 'app_settings')]
+    #[Route(path: '{_locale}/admin/settings', name: 'app_settings', requirements: ['_locale' => '%app.supported_locales%'])]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
@@ -25,7 +25,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/admin/settings/users', name: 'app_settings_users')]
+    #[Route(path: '{_locale}/admin/settings/users', name: 'app_settings_users', requirements: ['_locale' => '%app.supported_locales%'])]
     public function user_list(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_TECH_ADMIN');

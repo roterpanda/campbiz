@@ -1,0 +1,17 @@
+# English translations
+roles:
+  ROLE_ADMIN: "Admin"
+  ROLE_TECH_ADMIN: "Tech Admin"
+  ROLE_EMPLOYEE: "Employee"
+  ROLE_USER: "User"
+  ROLE_UNKOWN: "Unknown"
+
+Settings: "Settings"
+Manage users: "Manage Users"
+User Settings: "User Settings"
+Add User: "Add User"
+Username: "Username"
+Email: "Email"
+Roles: "Roles"
+Actions: "Actions"
+Password: "Password"

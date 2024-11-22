@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block title %}Settings{% endblock %}
+{% trans_default_domain 'messages' %}
+{% block title %}{{ 'Settings'|trans }}{% endblock %}
 {% block body %}
-    <h1>Settings</h1>
+    <h1>{{ 'Settings'|trans }}</h1>
     <!-- Add your settings content here -->
 {% endblock %}
