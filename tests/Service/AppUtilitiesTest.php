@@ -8,4 +8,8 @@ use PHPUnit\Framework\TestCase;
 class AppUtilitiesTest extends TestCase
 {
 
+    public function testGetPrintableRolesFromUser()
+    {
+
+    }
 }
