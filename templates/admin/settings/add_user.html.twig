@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 {% trans_default_domain 'messages' %}
 {% block title %}{{ 'Add User'|trans }}{% endblock %}
-{% block body %}
-    <h1>{{'Add User'|trans}}</h1>
+{% block main_title %}
+    {{'Add User'|trans}}
+{% endblock %}
+{% block main %}
+
     {{ form_errors(registrationForm) }}
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
