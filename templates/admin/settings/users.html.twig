@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{'User Settings'|trans}}{% endblock %}
-{% block body %}
-    <h1>{{ 'Manage users'|trans }}</h1>
+{% block main_title %}
+    {{ 'Manage users'|trans }}
+{% endblock %}
+{% block main %}
     <a href="{{ path("app_add_user") }}" class="btn btn-primary">{{ 'Add User'|trans }}</a>
     <table class="table">
         <thead>
